@@ -31,15 +31,28 @@ exports.loginUser= (request,response) => {
                 response.send({status:false, err:err.message})
             } 
              if(doc){
-                   if(doc.password == userData.password){
-                    var payload={id:doc._id};
-                    var token=JWT.sign(payload,Config.config.JWT_SECRET)
-                  response.send({result:true,token:token});   
+                   
+                   if(doc.role == userData.role){
+
+                    if(doc.password == userData.password){
+                        var payload={id:doc._id};
+                        var token=JWT.sign(payload,Config.config.JWT_SECRET)
+                      response.send({result:true,token:token});   
+                       }
+                       else
+                       {
+                         response.send({result:false, message:"Password incorrect"})
+                       }
+
                    }
+                   else
+                   {
+                       response.status(401).send({result:false, messaged:"Unauthorized access"});
+                   }
+                   
              }
         })
 }
-
 exports.changePassword=(request,response) =>{
 
     var userData= request.body;
