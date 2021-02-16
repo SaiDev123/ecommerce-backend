@@ -5,5 +5,8 @@ var productRouter=express.Router();
 var ProductController = require('../controllers/product.controller');
 
 productRouter.post('/addProduct',ProductController.addProduct);
+productRouter.get('/allProducts',ProductController.getProducts);
+productRouter.get('/product/:id',ProductController.getProductById);
+productRouter.put('/updateProduct/:id',ProductController.updateProduct);
 
 module.exports=productRouter;
