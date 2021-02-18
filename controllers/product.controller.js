@@ -1,6 +1,8 @@
 
 var ProductModel= require('../models/product.model');
 
+var url= require('url');
+
 exports.addProduct=function(request,response){
 
     var product= request.body;
@@ -58,4 +60,30 @@ exports.updateProduct=function(request,response){
             response.send(res);
         }
     })
+}
+
+exports.getProductsByChoice= function(request,response){
+
+    var choice=request.query.choice;
+
+     switch(choice){
+        case "asc": ProductModel.find({}).sort({'price':1}).exec((err,docs) => {
+            console.log(docs);
+            response.send(docs);
+        })
+        break;
+        case "desc": ProductModel.find({}).sort({'price':-1}).exec((err,docs) => {
+            console.log(docs);
+            response.send(docs);
+        })
+        break;
+     }
+}
+
+exports.getProductsByFilter=function(request,response){
+
+    var choice=request.query.choice;
+
+     
+
 }
