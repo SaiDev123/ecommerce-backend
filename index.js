@@ -1,5 +1,6 @@
 var express = require('express');
 var app= express();
+var cors= require('cors');
 
 var DB= require('./config/db.config');
 var Config=require('./config/app.config');
@@ -11,6 +12,7 @@ app.use(express.urlencoded({extended:true}));
 
 DB.connect();
 
+app.use(cors());
 app.use('/user',UserRouter);
 app.use('/admin',ProductRouter);
 
