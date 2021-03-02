@@ -5,7 +5,7 @@ var Schema=mongoose.Schema;
 var ProductSchema = new Schema(
     {
         pid: {
-            type: Number,
+            type: String,
             required:true,
             unique:true ,
             index:true

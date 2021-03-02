@@ -7,7 +7,7 @@ var ProductController = require('../controllers/product.controller');
 
 var AuthMiddleware= require('../middlewares/auth.middleware');
 
-productRouter.post('/addProduct',AuthMiddleware.authMiddleware,ProductController.addProduct);
+productRouter.post('/addProduct',ProductController.addProduct);
 productRouter.get('/allProducts',ProductController.getProducts);
 productRouter.get('/product/:id',ProductController.getProductById);
 productRouter.put('/updateProduct/:id',AuthMiddleware.authMiddleware,ProductController.updateProduct);
