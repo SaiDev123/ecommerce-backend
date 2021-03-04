@@ -7,12 +7,15 @@ exports.addProduct=function(request,response){
 
     var product= request.body;
 
+    console.log('product',product);
+
     var newProduct=new ProductModel(product);
 
     newProduct.save(function(err,doc){
         if(err){
             response.send({status:false,message:err.message})
         }
+        console.log('doc',doc);
         if(doc._id){
             response.send({status:true,message:"product added successfully"});
         }
