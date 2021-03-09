@@ -53,6 +53,28 @@ exports.loginUser= (request,response) => {
              }
         })
 }
+
+exports.checkUsername= (request,response) => {
+
+    console.log("In check username");
+ 
+    var userData= request.body;
+
+     UserModel.findOne({username:userData.username},(err,doc) =>{
+         if(err){
+             console.log(err);
+             response.send({status:false, err:err.message});
+         }
+         if(doc){
+               response.send({status:true});
+         }
+         else
+         {
+             response.send({status:false});
+         }
+     })
+}
+
 exports.changePassword=(request,response) =>{
 
     var userData= request.body;

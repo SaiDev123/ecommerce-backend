@@ -12,6 +12,8 @@ userRouter.post('/register',UserController.registerUser);
 
 userRouter.post('/login',UserController.loginUser);
 
+userRouter.post('/checkusername',UserController.checkUsername);
+
 userRouter.post('/changePassword',AuthConfig.authMiddleware,UserController.changePassword);
 
 module.exports=userRouter;
