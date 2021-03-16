@@ -13,7 +13,7 @@ productRouter.get('/product/:id',ProductController.getProductById);
 productRouter.put('/updateProduct/:id',AuthMiddleware.authMiddleware,ProductController.updateProduct);
 productRouter.get('/getProductsByChoice',ProductController.getProductsByChoice);
 productRouter.get('/getProductsByFilter',ProductController.getProductsByFilter);
-
+productRouter.delete('/deleteProduct/:_id', ProductController.deleteProduct)
 module.exports=productRouter;
 
 //eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjlkM2M2ZDgzMGM2MmNmYmRmNmQ4YSIsImlhdCI6MTYxMzYxNDc5MH0.o2oTN4dWsfaEqXwP6hkgmXdkrFTRivYgxDZ3dl4_mWQ

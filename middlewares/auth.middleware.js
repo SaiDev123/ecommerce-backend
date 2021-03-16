@@ -5,8 +5,9 @@ exports.authMiddleware= function(request,response,next){
 
     if(request.headers.authorization == null || request.headers.authorization == "" ){
         response.status(401).send("Unauthorized access!");
-    }
 
+        //bearer token
+    }
     var token= request.headers.authorization.split(' ')[1];
 
     console.log('token',token);

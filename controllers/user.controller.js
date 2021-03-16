@@ -23,7 +23,9 @@ exports.registerUser=(request,response) => {
 
 exports.loginUser= (request,response) => {
 
+    console.log("I am in login");
     var userData= request.body;
+    console.log(userData);
 
         UserModel.findOne({emailId:userData.emailId},(err, doc) => {
             if(err){
@@ -31,9 +33,13 @@ exports.loginUser= (request,response) => {
                 response.send({status:false, err:err.message})
             } 
              if(doc){
+
+                console.log('doc found',doc);
+
+                console.log(doc.role,userData.role)
                    
                    if(doc.role == userData.role){
-
+                      console.log('role mathched');
                     if(doc.password == userData.password){
                         var payload={id:doc._id};
                         var token=JWT.sign(payload,Config.config.JWT_SECRET)

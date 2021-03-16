@@ -38,14 +38,23 @@ ProductModel.find({},(err,docs) => {
 
 exports.getProductById=function(request,response){
 
-    var pid=request.params.id;
+    console.log("I am inside get product by id");
 
-    ProductModel.findOne({pid:pid},(err,doc) => {
+    var pid=request.params.id;
+    
+    //console.log('pid', typeof parseInt(pid));
+
+      console.log(typeof pid);
+
+      console.log("productid",pid);
+
+    ProductModel.findOne({_id:pid},function(err,doc) {
         if(err){
             response.send(err.message);
         }
         else
         {
+            console.log('doc',doc)
         response.send(doc);
         }
     })
@@ -89,4 +98,22 @@ exports.getProductsByFilter=function(request,response){
 
      
 
+}
+
+exports.deleteProduct= function(request,response){
+
+    var _id=request.params._id;
+
+    console.log('_id',_id);
+
+    ProductModel.deleteOne({_id:_id},function(err){
+        if(err){
+
+            response.send(false);
+        }
+        else
+        {
+            response.send(true);
+        }
+    })
 }

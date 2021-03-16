@@ -6,17 +6,5 @@ exports.config={
 }
 
 
-// ReactHooks - 2 hooks - 8 remaining 
-
-// CSS Styles 
-
-// Composition vs inheritance 
-
-// Higher Order Components 
-
-// Memo, portals 
-
-
-
 
 
