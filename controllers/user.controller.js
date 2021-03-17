@@ -111,3 +111,46 @@ exports.changePassword=(request,response) =>{
          }
     })
 }
+
+
+exports.allUsers= function(request,response){
+
+    UserModel.find({},(err,docs) => {
+        if(err){
+            response.send({status:false,message:err.message});
+            return;
+        }
+        if(docs){
+          response.send(docs);
+        }
+    })
+
+}
+exports.updateRole= function(request,response){
+var userData= request.body;
+
+    UserModel.findOne({emailId:userData.emailId},(err, doc) => {
+        if(err){
+            console.log(err);
+            response.send({status:false, err:err.message})
+        } 
+         if(doc){
+                
+                 UserModel.updateOne({emailId:userData.emailId},{role: userData.role},(err,res) => {
+                     if(err){
+                        console.log(err);
+                        response.send({status:false, err:err.message})
+                     }
+                     if(res){
+                        response.send({status:true, message:"updated role"})
+                     }
+                 })
+
+               }
+               else
+                {
+                    response.send({status:false, err:"current password is incorrect"})
+                }
+         
+    })
+}
