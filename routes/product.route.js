@@ -6,8 +6,9 @@ var ProductController = require('../controllers/product.controller');
 // add middleware -> verify the token
 
 var AuthMiddleware= require('../middlewares/auth.middleware');
-
+// http://localhost:10899/admin/addProduct
 productRouter.post('/addProduct',ProductController.addProduct);
+//http://localhost:10899/admin/allProducts
 productRouter.get('/allProducts',ProductController.getProducts);
 productRouter.get('/product/:id',ProductController.getProductById);
 productRouter.put('/updateProduct/:id',AuthMiddleware.authMiddleware,ProductController.updateProduct);
